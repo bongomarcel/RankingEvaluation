@@ -25,8 +25,8 @@ cur_time = lambda : int(round(time.time()))
 # Add evaluation methods here that should be evaluated.
 # Custom evaluation methods can be added to EvaluationMeasures.py
 # The following conventios is required:
-#    {name : (function, cutoff)}                # for methods that do not require the total number of ranks. cutoff can be None if no cutoff is used.
-#    {name : (function, cutoff, totalRanks)}    # totalRanks should be True for methods that require total ranks number (which is set with -n).
+#    {name : (function, cutoff, requiresTotalRanks)}    
+# totalRanks should be True for methods that require total ranks number (which is set with -n).
 ################################################################
 def getEvaluationMethods():
     return {

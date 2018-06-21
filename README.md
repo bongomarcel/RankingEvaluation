@@ -1,5 +1,5 @@
 # Ranking Evaluation Tool
-A script for evaluating the stability and sensitivity (or discriminative power) of the most common information retrieval evaluation measures such as "mean average precision" (MAP), "normalised discounted cumulative gain" (nDCG), etc., when unlabelled test data is used to evaluate ranking systems. This tool also computes significance values when comparing performance differences between ranking systems.
+A script for evaluating the stability and sensitivity (or discriminative power) of the most common information retrieval evaluation measures such as "average precision" (AP), "normalised discounted cumulative gain" (nDCG), etc., when unlabelled test data is used to evaluate ranking systems. This tool also computes significance values when comparing performance differences between ranking systems.
 
 ### Background information
 
@@ -139,8 +139,8 @@ From this table, one can see that System 4 is signifcantly better than all other
 The table for the evaluation results has too many columns to show in an image. Each row in these results corresponds to one experiment and lists the following information:
 
 Below is a description of each column in the evaluation results section and how the corresponding values should be interpreted:
-- **method**: the name of the evaluation measure. This is a unique name of the evaluation measure which is a string that concatenates the evaluation measure's name and optionally the used cut-off value (```<methodName>_<cutoff>```) if an experiment is conducted with various cut-off values from a parameter range. Example: ```MAP@n_10```.
-- **norm**: the canonical name of the evaluation measure as specified by the user. Example: ```MAP@n```.
+- **method**: the name of the evaluation measure. This is a unique name of the evaluation measure which is a string that concatenates the evaluation measure's name and optionally the used cut-off value (```<methodName>_<cutoff>```) if an experiment is conducted with various cut-off values from a parameter range. Example: ```AP@n_10```.
+- **norm**: the canonical name of the evaluation measure as specified by the user. Example: ```AP@n```.
 - **correlation**: the average spearman rank correlation between the queries (sampled without replacement) used during the number of iterations. It has no significant meaning for the evaluation of the evaluation measures and is only printed for informational purposes.
 - **stddev corr**: the standard deviation of **correlations**.
 - **systemCount**: displays the number of systems used for this evaluation.
