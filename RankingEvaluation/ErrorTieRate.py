@@ -28,7 +28,6 @@ def errorTieRates(methodProperties, system_id_rank, queryId_ids, fuzziness):
     query_performanceSum = defaultdict(lambda : 0.0)
     query_relSum = defaultdict(lambda : 0.0)
     query_performanceCount = defaultdict(lambda : 0.0)
-    
     for system in systemNames:
         for queryId, ids in queryId_ids.iteritems():
             sortedRanks = sorted([system_id_rank[system][id_] for id_ in ids])            

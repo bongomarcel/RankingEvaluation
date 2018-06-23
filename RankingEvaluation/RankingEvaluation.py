@@ -15,12 +15,12 @@ from Pipeline import Pipeline
 import EvaluationMeasures as ms
 import numpy as np
 from scipy import stats
-import time, sys, argparse
+import time, sys, argparse, signal
 import random as rand
 import warnings
 
 cur_time = lambda : int(round(time.time()))
-
+pool = Pool(1)
 ################################################################
 # Add evaluation methods here that should be evaluated.
 # Custom evaluation methods can be added to EvaluationMeasures.py
@@ -45,6 +45,14 @@ def getEvaluationMethods():
 # Example of how an evaluation method with multiple cutoff can 
 # be specified programmatically.
 ################################################################
+def signal_handler(signal, frame):
+    print('Received int signal. Exiting')
+    if pool is not None:
+        pool.terminate()
+        pool.join()
+    sys.exit(0)
+    
+
 def getMehodOverRange():
     methods = dict()
     for i in range(10,1001,10):
@@ -205,6 +213,7 @@ def getExperimentsFromParameterRanges(methodNames_parameters, splitCounts, syste
 
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, signal_handler)
     parser = argparse.ArgumentParser(description='Ranking Evaluation Tool.', usage='%(prog)s [options] [file containing ranks]')
     parser.add_argument('-s', '--seed', default=None, type=int, help='seed (default: None)') #seed
     parser.add_argument('-t', '--threads', default=1, type=int, help='number of threads to use. (default: 1)') # nr threads
@@ -292,7 +301,7 @@ if __name__ == '__main__':
     experiment_results = Results()
     experiment_results.systemList = systemList
     pool = Pool(nr_threads)
-        
+    
     big_bang_time = cur_time()
     if useSwap or useEstDiff:
         print('Computing ASL rate and swap method (bootstrapped approach)') #computes: ASL rate, swap method (with replacement), bootstrapped approach.

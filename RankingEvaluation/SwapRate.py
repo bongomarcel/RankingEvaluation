@@ -36,6 +36,7 @@ def swapRate(metricProperties, system_id_rank, queryId_ids, fuzziness, bootstrap
     system_query_result = defaultdict(lambda : defaultdict())
     queryIds = queryId_ids.keys()
     systemNames = system_id_rank.keys()
+    
     for system in systemNames:
         for queryId, ids in queryId_ids.iteritems():
             sortedRanks = sorted([system_id_rank[system][id_] for id_ in ids])

@@ -107,6 +107,7 @@ class Pipeline(object):
         if self.verbose:
             print 'Total time=%f' %((time.time() - time_begin)/60.0)
         return results
+     
     
     def wrapper(self, data): #this is the pipeline where results are parameters for the next function
         d = data

@@ -183,8 +183,8 @@ Dunaiski, M., Geldenhuys, J. and Visser, W. (2018). [How to evaluate rankings of
 ### License
 This code is made available under the [MIT License](LICENSE)
 
-### Known Bugs:
+### Known Bugs and TODOs:
 - Messy code. The code is very messy, not especially efficient, and needs to be checked for cross-platform compatibility. Any improvements of the code are more than welcome; shoot me a message.
 - The relevant entity count of the measure implementation ```AP_interpolated_permille()``` is wrong.
 - The significance matrices are currently computed for one parameter combination. The combination is the first value for each parameter range.
-- Killing the program does not kill processes.
+- Implement query and query set version that allows the evaluation of MAP. This requires test data to be partitioned in distinct topics.
